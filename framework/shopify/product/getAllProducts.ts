@@ -4,7 +4,10 @@ import {
   normalizeProduct,
   getAllProductsQueries
 } from "../utils"
+
 import { Product } from "@common/types/product"
+
+
 type ReturnType ={
     products:ProductConnection
 }

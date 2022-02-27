@@ -1,6 +1,4 @@
 import type { NextPage, InferGetStaticPropsType } from 'next'
-import {useEffect} from "react"
-import { json } from 'stream/consumers'
 import getAllProducts from '@framework/product/getAllProducts'
 
 
@@ -16,6 +14,7 @@ revalidate: 4*60*60
 }
 
 const Home = ({products}:InferGetStaticPropsType<typeof getStaticProps>) => {
+  
   return (
     <div >
       {JSON.stringify(products)}
