@@ -1,6 +1,18 @@
-
-const getAllProducts = async ():Promise<number[]>=>{
-    const products = [1,2,3]
+import { ProductConnection } from "../schema"
+import {
+  fetchApi,
+  normalizeProduct,
+  getAllProductsQueries
+} from "../utils"
+import { Product } from "@common/types/product"
+type ReturnType ={
+    products:ProductConnection
+}
+const getAllProducts = async ():Promise<Product[]>=>{
+    const {data} = await fetchApi<ReturnType>({query:getAllProductsQueries})
+    const products = data.products.edges.map(({ node: product }) => {
+        return normalizeProduct(product)
+        }) ?? []
     return products
 }
 

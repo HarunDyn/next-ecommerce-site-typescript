@@ -1,5 +1,9 @@
 import type { NextPage, InferGetStaticPropsType } from 'next'
-import getAllProducts from '../framework/shopify/product/getAllProducts'
+import {useEffect} from "react"
+import { json } from 'stream/consumers'
+import getAllProducts from '@framework/product/getAllProducts'
+
+
 
 export async function getStaticProps(){
 const products = await getAllProducts()
@@ -14,7 +18,7 @@ revalidate: 4*60*60
 const Home = ({products}:InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <div >
-      {products}
+      {JSON.stringify(products)}
     </div>
   )
 }
