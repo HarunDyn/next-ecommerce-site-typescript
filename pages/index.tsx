@@ -1,6 +1,7 @@
 import type { NextPage, InferGetStaticPropsType } from 'next'
 import getAllProducts from '@framework/product/getAllProducts'
 import { getConfig } from '@framework/api/config'
+import { Layout } from "@components/common"
 
 
 
@@ -19,9 +20,13 @@ const Home = ({products}:InferGetStaticPropsType<typeof getStaticProps>) => {
   
   return (
     <div >
+      <h1 className="text-3xl font-bold underline">
+      Hello world!
+      </h1>
       {JSON.stringify(products)}
     </div>
   )
 }
 
+Home.Layout = Layout
 export default Home
